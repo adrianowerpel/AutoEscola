@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/DAO/AlunoDAO.java</file>
             <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Actions/ValidaLoginAction.java</file>
             <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/web/pages/matricula.jsp</file>
             <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/web/template.jsp</file>
             <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Controller/CentralController.java</file>
             <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/web/pages/login.jsp</file>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/DAO/LoginDAO.java</file>
+            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Actions/LoginViewAction.java</file>
+            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Actions/ValidaLoginAdminAction.java</file>
+            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/DAO/PessoaDAO.java</file>
         </group>
     </open-files>
 </project-private>

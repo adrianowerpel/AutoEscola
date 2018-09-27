@@ -20,6 +20,7 @@ public class LoginViewAction implements ICommander{
     public void executar(HttpServletRequest request, HttpServletResponse response) throws Exception {
         
         RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=login");
+        request.setAttribute("access",null);
         rd.forward(request, response);
         
     }

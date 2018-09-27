@@ -5,11 +5,14 @@
  */
 package Controller;
 
+import Actions.AdminLoginViewAction;
 import Actions.HomeViewAction;
 import Actions.LoginViewAction;
+import Actions.LogoutAction;
 import Actions.MatriculaAction;
 import Actions.SaveAlunoAction;
 import Actions.ValidaLoginAction;
+import Actions.ValidaLoginAdminAction;
 import Interfaces.ICommander;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,9 +35,12 @@ public class CentralController extends HttpServlet {
     static {
         tabela.put(null, new HomeViewAction());
         tabela.put("login", new LoginViewAction());
+        tabela.put("adminLogin", new AdminLoginViewAction());
         tabela.put("matricula", new MatriculaAction());
         tabela.put("gravarUser", new SaveAlunoAction());
         tabela.put("validaLogin", new ValidaLoginAction());
+        tabela.put("validaLoginAdmin", new ValidaLoginAdminAction());
+        tabela.put("logout", new LogoutAction());
 
     }
 

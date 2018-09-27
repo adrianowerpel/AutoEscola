@@ -6,7 +6,7 @@ MAIN CONTENT
     <div class="container">
 
         <form class="form-control" action="control" method="POST">
-            <input type="hidden" name="ac" value="validaLogin"/>
+            <input type="hidden" name="ac" id="tipoPessoa"/>
             <h2 class="form-login-heading">Entrar</h2>
             <div class="login-wrap">
 
@@ -35,4 +35,26 @@ MAIN CONTENT
 
     </div>
 </div>
+
+<script>
+    //custom select box
+    
+    <%
+        if(request.getAttribute("access") == null){   
+        %>
+            document.getElementById("tipoPessoa").value = 'validaLogin';
+        <%
+    }
+    else{
+        %>
+            document.getElementById("tipoPessoa").value = 'validaLoginAdmin';
+        <%
+    }
+    %>
+    
+    $(function () {
+        $('select.styled').customSelect();
+    });
+
+</script>
 
