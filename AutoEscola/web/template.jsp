@@ -37,71 +37,21 @@
                 </a>
             </div>
 
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
-                    <ul class="navbar-nav navbar-collapse justify-content-around">                        
-                        <li class="nav-item">
-                            <a class="nav-item" href="control">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-item" href="#">Horário das Aulas</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Área do Aluno
-                            </a>                            
-                            <c:if test="${sessionScope.user == null}">
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="control?ac=matricula">Pré-Matrícula</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="control?ac=login">Login</a>
-                                </div>
-                            </c:if>
-                            <c:if test="${sessionScope.user != null}">
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="control?ac=matricula">Minhas Aulas</a>
-                                    <a class="dropdown-item" href="#">Meus Dados</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="control?ac=logout">Logout</a>
-                                </div>
-                            </c:if>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-item" href="#">Contato</a>
-                        </li>                        
-                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Administração
-                            </a>                            
-                            <c:if test="${sessionScope.user == null}">
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="control?ac=adminLogin">Login</a>
-                                </div>
-                            </c:if>
-                            <c:if test="${sessionScope.user != null}">
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="control?ac=matricula">Controle de Alunos</a>
-                                    <a class="dropdown-item" href="control?ac=matricula">Controle de Professores</a>
-                                    <a class="dropdown-item" href="#">Aulas Práticas</a>
-                                    <a class="dropdown-item" href="#">Aulas Teóricas</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="control?ac=logout">Logout</a>
-                                </div>
-                            </c:if>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <jsp:include page="pages/menu.jsp"/>
             
             <c:if test="${sessionScope.user != null}">
                 <div style="margin-top: 2%">
                     <h4>Bem Vindo ${sessionScope.user.nome}</h4>                 
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.atendente != null}">
+                <div style="margin-top: 2%">
+                    <h4>Bem Vindo ${sessionScope.atendente.nome}</h4>                 
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.admin != null}">
+                <div style="margin-top: 2%">
+                    <h4>Bem Vindo ${sessionScope.admin.nome}</h4>                 
                 </div>
             </c:if>
 

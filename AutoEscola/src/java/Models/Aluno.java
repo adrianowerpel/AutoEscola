@@ -95,12 +95,12 @@ public class Aluno implements Serializable {
         @JoinColumn(name = "aula_teorica_id", referencedColumnName = "id", nullable = false)})
     @ManyToMany
     private List<AulaTeorica> aulaTeoricaList;
-    @JoinColumn(name = "pagamento_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private Pagamento pagamentoId;
     @JoinColumn(name = "login_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Login loginId;
+    @JoinColumn(name = "pagamento_id", referencedColumnName = "id")
+    @ManyToOne
+    private Pagamento pagamentoId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunoMatricula")
     private List<AulaPratica> aulaPraticaList;
 
@@ -230,20 +230,20 @@ public class Aluno implements Serializable {
         this.aulaTeoricaList = aulaTeoricaList;
     }
 
-    public Pagamento getPagamentoId() {
-        return pagamentoId;
-    }
-
-    public void setPagamentoId(Pagamento pagamentoId) {
-        this.pagamentoId = pagamentoId;
-    }
-
     public Login getLoginId() {
         return loginId;
     }
 
     public void setLoginId(Login loginId) {
         this.loginId = loginId;
+    }
+
+    public Pagamento getPagamentoId() {
+        return pagamentoId;
+    }
+
+    public void setPagamentoId(Pagamento pagamentoId) {
+        this.pagamentoId = pagamentoId;
     }
 
     @XmlTransient

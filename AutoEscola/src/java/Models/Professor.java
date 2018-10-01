@@ -34,8 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Professor.findAll", query = "SELECT p FROM Professor p")
     , @NamedQuery(name = "Professor.findById", query = "SELECT p FROM Professor p WHERE p.id = :id")
     , @NamedQuery(name = "Professor.findByNome", query = "SELECT p FROM Professor p WHERE p.nome = :nome")
-    , @NamedQuery(name = "Professor.findByEmail", query = "SELECT p FROM Professor p WHERE p.email = :email")
-    , @NamedQuery(name = "Professor.findByProfessorcol", query = "SELECT p FROM Professor p WHERE p.professorcol = :professorcol")})
+    , @NamedQuery(name = "Professor.findByEmail", query = "SELECT p FROM Professor p WHERE p.email = :email")})
 public class Professor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,16 +49,13 @@ public class Professor implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 50)
     private String email;
-    @Column(length = 45)
-    private String professorcol;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "professorId")
     private List<AulaTeorica> aulaTeoricaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "professorId")
+    private List<AulaPratica> aulaPraticaList;
     @JoinColumn(name = "login_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Login loginId;
-    @JoinColumn(name = "aula_pratica_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private AulaPratica aulaPraticaId;
 
     public Professor() {
     }
@@ -98,14 +94,6 @@ public class Professor implements Serializable {
         this.email = email;
     }
 
-    public String getProfessorcol() {
-        return professorcol;
-    }
-
-    public void setProfessorcol(String professorcol) {
-        this.professorcol = professorcol;
-    }
-
     @XmlTransient
     public List<AulaTeorica> getAulaTeoricaList() {
         return aulaTeoricaList;
@@ -115,20 +103,21 @@ public class Professor implements Serializable {
         this.aulaTeoricaList = aulaTeoricaList;
     }
 
+    @XmlTransient
+    public List<AulaPratica> getAulaPraticaList() {
+        return aulaPraticaList;
+    }
+
+    public void setAulaPraticaList(List<AulaPratica> aulaPraticaList) {
+        this.aulaPraticaList = aulaPraticaList;
+    }
+
     public Login getLoginId() {
         return loginId;
     }
 
     public void setLoginId(Login loginId) {
         this.loginId = loginId;
-    }
-
-    public AulaPratica getAulaPraticaId() {
-        return aulaPraticaId;
-    }
-
-    public void setAulaPraticaId(AulaPratica aulaPraticaId) {
-        this.aulaPraticaId = aulaPraticaId;
     }
 
     @Override

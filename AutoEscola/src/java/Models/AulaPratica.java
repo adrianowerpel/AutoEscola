@@ -7,9 +7,7 @@ package Models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,12 +17,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,7 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "AulaPratica.findAll", query = "SELECT a FROM AulaPratica a")
     , @NamedQuery(name = "AulaPratica.findById", query = "SELECT a FROM AulaPratica a WHERE a.id = :id")
     , @NamedQuery(name = "AulaPratica.findByDataAula", query = "SELECT a FROM AulaPratica a WHERE a.dataAula = :dataAula")
-    , @NamedQuery(name = "AulaPratica.findByHoraAula", query = "SELECT a FROM AulaPratica a WHERE a.horaAula = :horaAula")
     , @NamedQuery(name = "AulaPratica.findByTema", query = "SELECT a FROM AulaPratica a WHERE a.tema = :tema")
     , @NamedQuery(name = "AulaPratica.findByVeiculo", query = "SELECT a FROM AulaPratica a WHERE a.veiculo = :veiculo")})
 public class AulaPratica implements Serializable {
@@ -50,23 +45,20 @@ public class AulaPratica implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "data_aula", nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date dataAula;
-    @Basic(optional = false)
-    @Column(name = "hora_aula", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date horaAula;
+    private Date dataAula;
     @Basic(optional = false)
     @Column(nullable = false, length = 50)
     private String tema;
     @Basic(optional = false)
     @Column(nullable = false, length = 12)
     private String veiculo;
+    @JoinColumn(name = "professor_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private Professor professorId;
     @JoinColumn(name = "aluno_matricula", referencedColumnName = "matricula", nullable = false)
     @ManyToOne(optional = false)
     private Aluno alunoMatricula;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aulaPraticaId")
-    private List<Professor> professorList;
 
     public AulaPratica() {
     }
@@ -75,10 +67,9 @@ public class AulaPratica implements Serializable {
         this.id = id;
     }
 
-    public AulaPratica(Integer id, Date dataAula, Date horaAula, String tema, String veiculo) {
+    public AulaPratica(Integer id, Date dataAula, String tema, String veiculo) {
         this.id = id;
         this.dataAula = dataAula;
-        this.horaAula = horaAula;
         this.tema = tema;
         this.veiculo = veiculo;
     }
@@ -99,14 +90,6 @@ public class AulaPratica implements Serializable {
         this.dataAula = dataAula;
     }
 
-    public Date getHoraAula() {
-        return horaAula;
-    }
-
-    public void setHoraAula(Date horaAula) {
-        this.horaAula = horaAula;
-    }
-
     public String getTema() {
         return tema;
     }
@@ -123,21 +106,20 @@ public class AulaPratica implements Serializable {
         this.veiculo = veiculo;
     }
 
+    public Professor getProfessorId() {
+        return professorId;
+    }
+
+    public void setProfessorId(Professor professorId) {
+        this.professorId = professorId;
+    }
+
     public Aluno getAlunoMatricula() {
         return alunoMatricula;
     }
 
     public void setAlunoMatricula(Aluno alunoMatricula) {
         this.alunoMatricula = alunoMatricula;
-    }
-
-    @XmlTransient
-    public List<Professor> getProfessorList() {
-        return professorList;
-    }
-
-    public void setProfessorList(List<Professor> professorList) {
-        this.professorList = professorList;
     }
 
     @Override

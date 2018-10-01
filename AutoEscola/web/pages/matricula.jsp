@@ -7,7 +7,7 @@
             <input type="hidden" name="ac" value="gravarUser" />
             <div class="form-group">
                 <label for="matricula">Matricula:</label>
-                <input id="matricula" name="matricula" class="form-control" type="text">
+                <input id="matricula" name="matricula" disabled="disabled" class="form-control" type="text">
             </div>
             <div class="form-group">
                 <label for="nome">Nome Completo:</label>
@@ -15,7 +15,7 @@
             </div>
             <div class="form-group">
                 <label for="cpf">CPF:</label>
-                <input id="cpf" name="cpf" class="form-control" type="text" placeholder="Somente números">
+                <input id="cpf" name="cpf" class="form-control" type="number" max="99999999999" placeholder="Somente números">
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -86,11 +86,11 @@
             <h3>Login</h3>
             <div class="form-group">
                 <label for="cpf">Login:</label>
-                <input id="login" name="login" class="form-control" type="text" placeholder="Digite o Login">
+                <input id="login" name="login" class="form-control" type="text" minlength="8" maxlength="25" placeholder="Digite o Login">
             </div>
             <div class="form-group">
                 <label for="cpf">Senha:</label>
-                <input id="senha" name="senha" class="form-control" type="password" placeholder="Digite a Senha">
+                <input id="senha" name="senha" class="form-control" type="password" minlength="10" maxlength="25" placeholder="Digite a Senha">
             </div>
             <div>
                 <button class="btn btn-primary" type="submit"> Salvar</button>

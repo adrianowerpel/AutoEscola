@@ -37,8 +37,15 @@ public class ValidaLoginAdminAction implements ICommander{
             new LoginViewAction().executar(request, response);
         }
         else{
-            request.getSession().setAttribute("user", pessoa);
-            new HomeViewAction().executar(request, response);
+            
+            if(pessoa.getTipoPessoa().equals("atendente")){
+                request.getSession().setAttribute("atendente", pessoa);
+                new HomeViewAction().executar(request, response);
+            }
+            else{
+                request.getSession().setAttribute("admin", pessoa);
+                new HomeViewAction().executar(request, response);
+            }
         }
     }
     

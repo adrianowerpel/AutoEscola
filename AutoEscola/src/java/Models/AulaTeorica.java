@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "AulaTeorica.findAll", query = "SELECT a FROM AulaTeorica a")
     , @NamedQuery(name = "AulaTeorica.findById", query = "SELECT a FROM AulaTeorica a WHERE a.id = :id")
     , @NamedQuery(name = "AulaTeorica.findByDataAula", query = "SELECT a FROM AulaTeorica a WHERE a.dataAula = :dataAula")
-    , @NamedQuery(name = "AulaTeorica.findByHoraAula", query = "SELECT a FROM AulaTeorica a WHERE a.horaAula = :horaAula")
     , @NamedQuery(name = "AulaTeorica.findByTema", query = "SELECT a FROM AulaTeorica a WHERE a.tema = :tema")})
 public class AulaTeorica implements Serializable {
 
@@ -48,12 +47,8 @@ public class AulaTeorica implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "data_aula", nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date dataAula;
-    @Basic(optional = false)
-    @Column(name = "hora_aula", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date horaAula;
+    private Date dataAula;
     @Basic(optional = false)
     @Column(nullable = false, length = 50)
     private String tema;
@@ -70,10 +65,9 @@ public class AulaTeorica implements Serializable {
         this.id = id;
     }
 
-    public AulaTeorica(Integer id, Date dataAula, Date horaAula, String tema) {
+    public AulaTeorica(Integer id, Date dataAula, String tema) {
         this.id = id;
         this.dataAula = dataAula;
-        this.horaAula = horaAula;
         this.tema = tema;
     }
 
@@ -91,14 +85,6 @@ public class AulaTeorica implements Serializable {
 
     public void setDataAula(Date dataAula) {
         this.dataAula = dataAula;
-    }
-
-    public Date getHoraAula() {
-        return horaAula;
-    }
-
-    public void setHoraAula(Date horaAula) {
-        this.horaAula = horaAula;
     }
 
     public String getTema() {

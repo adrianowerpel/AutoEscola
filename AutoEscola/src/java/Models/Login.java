@@ -42,10 +42,10 @@ public class Login implements Serializable {
     @Column(nullable = false)
     private Integer id;
     @Basic(optional = false)
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 25)
     private String login;
     @Basic(optional = false)
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 25)
     private String senha;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "loginId")
     private List<Aluno> alunoList;

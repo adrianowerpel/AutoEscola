@@ -6,10 +6,15 @@
 package Controller;
 
 import Actions.AdminLoginViewAction;
+import Actions.AulaPraticaAlunoViewAction;
+import Actions.AulaTeoricaAlunoViewAction;
+import Actions.ControleProfessoresViewAction;
 import Actions.HomeViewAction;
 import Actions.LoginViewAction;
 import Actions.LogoutAction;
 import Actions.MatriculaAction;
+import Actions.ParticiparPraticaAction;
+import Actions.ParticiparTeoricaAction;
 import Actions.SaveAlunoAction;
 import Actions.ValidaLoginAction;
 import Actions.ValidaLoginAdminAction;
@@ -35,12 +40,20 @@ public class CentralController extends HttpServlet {
     static {
         tabela.put(null, new HomeViewAction());
         tabela.put("login", new LoginViewAction());
-        tabela.put("adminLogin", new AdminLoginViewAction());
-        tabela.put("matricula", new MatriculaAction());
+        tabela.put("matricula", new MatriculaAction());        
         tabela.put("gravarUser", new SaveAlunoAction());
+        
+        tabela.put("adminLogin", new AdminLoginViewAction());
         tabela.put("validaLogin", new ValidaLoginAction());
         tabela.put("validaLoginAdmin", new ValidaLoginAdminAction());
         tabela.put("logout", new LogoutAction());
+        tabela.put("controleProfessores", new ControleProfessoresViewAction());
+        
+        tabela.put("aulaTeorcaAluno", new AulaTeoricaAlunoViewAction());
+        tabela.put("participarTeorica", new ParticiparTeoricaAction());
+        
+        tabela.put("aulaPraticaAluno", new AulaPraticaAlunoViewAction());
+        tabela.put("participarTeorica", new ParticiparPraticaAction());
 
     }
 

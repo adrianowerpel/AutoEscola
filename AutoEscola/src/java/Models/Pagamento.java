@@ -8,7 +8,6 @@ package Models;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,7 +56,7 @@ public class Pagamento implements Serializable {
     private Integer numParcelas;
     @Column(name = "valor_parcelas")
     private Long valorParcelas;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pagamentoId")
+    @OneToMany(mappedBy = "pagamentoId")
     private List<Aluno> alunoList;
 
     public Pagamento() {

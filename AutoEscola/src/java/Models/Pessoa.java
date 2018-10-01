@@ -71,7 +71,7 @@ public class Pessoa implements Serializable {
     @Column(nullable = false, length = 50)
     private String estado;
     @Basic(optional = false)
-    @Column(name = "tipo_pessoa", nullable = false, length = 12)
+    @Column(name = "tipo_pessoa", nullable = false, length = 13)
     private String tipoPessoa;
     @JoinColumn(name = "login_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)

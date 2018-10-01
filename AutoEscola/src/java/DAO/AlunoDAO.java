@@ -61,4 +61,18 @@ public class AlunoDAO extends GenericDAO{
         }
     }
     
+    public void edit(Aluno aluno) {
+        EntityManager em = null;
+        try {
+            em = Open();
+            em.getTransaction().begin();
+            em.merge(aluno);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }    
+    }
+    
 }
