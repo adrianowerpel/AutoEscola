@@ -37,7 +37,15 @@ MAIN CONTENT
 </div>
 
 <script>
-    //custom select box
+    
+    <%
+        if (request.getAttribute("verifica") != null && ((boolean) request.getAttribute("verifica"))) {
+    %>
+            alert("<%= request.getAttribute("mensagem")%>");
+    <%
+        }
+    %>
+
     
     <%
         if(request.getAttribute("access") == null){   

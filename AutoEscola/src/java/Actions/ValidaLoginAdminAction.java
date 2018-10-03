@@ -32,9 +32,7 @@ public class ValidaLoginAdminAction implements ICommander{
         Pessoa pessoa = p.BuscarPorLogin(log);
         
         if(pessoa == null){
-//            request.setAttribute("jsAtivo", true);
-//            request.setAttribute("info", "Login ou senha incorretos!");
-            new LoginViewAction().executar(request, response);
+            new AdminLoginViewAction().executar(request, response);
         }
         else{
             

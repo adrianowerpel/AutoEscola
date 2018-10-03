@@ -82,7 +82,7 @@ public class Aluno implements Serializable {
     private String estado;
     @Basic(optional = false)
     @Column(nullable = false)
-    private short matriculado;
+    private boolean matriculado;
     @Basic(optional = false)
     @Column(name = "data_nascimento", nullable = false)
     @Temporal(TemporalType.DATE)
@@ -111,7 +111,7 @@ public class Aluno implements Serializable {
         this.matricula = matricula;
     }
 
-    public Aluno(Integer matricula, String nome, String email, String logradouro, String bairro, String numero, String cidade, String estado, short matriculado, Date dataNascimento, String cpf) {
+    public Aluno(Integer matricula, String nome, String email, String logradouro, String bairro, String numero, String cidade, String estado, boolean matriculado, Date dataNascimento, String cpf) {
         this.matricula = matricula;
         this.nome = nome;
         this.email = email;
@@ -197,11 +197,11 @@ public class Aluno implements Serializable {
         this.estado = estado;
     }
 
-    public short getMatriculado() {
+    public boolean getMatriculado() {
         return matriculado;
     }
 
-    public void setMatriculado(short matriculado) {
+    public void setMatriculado(boolean matriculado) {
         this.matriculado = matriculado;
     }
 

@@ -31,9 +31,9 @@ public class ValidaLoginAction implements ICommander{
         AlunoDAO a = new AlunoDAO();
         Aluno aluno = a.BuscarPorLogin(log);
         
-        if(aluno == null){
-//            request.setAttribute("jsAtivo", true);
-//            request.setAttribute("info", "Login ou senha incorretos!");
+        if(aluno == null || !aluno.getMatriculado()){
+            request.setAttribute("verifica", true);
+            request.setAttribute("mensagem", "Login ou senha incorretos!");
             new LoginViewAction().executar(request, response);
         }
         else{

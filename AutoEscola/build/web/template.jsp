@@ -9,7 +9,7 @@
         <link href="boostrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>        
-        <div class="container" style="width: 1500px; margin-left: auto; margin-right: auto">            
+        <div class="container col-9" style="width: 100%;">            
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

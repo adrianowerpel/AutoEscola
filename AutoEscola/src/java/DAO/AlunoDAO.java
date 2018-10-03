@@ -7,6 +7,8 @@ package DAO;
 
 import Models.Aluno;
 import Models.Login;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
@@ -73,6 +75,41 @@ public class AlunoDAO extends GenericDAO{
                 em.close();
             }
         }    
+    }
+    
+     public List<Aluno> getAll() {
+        EntityManager em = null;
+        try {
+            em = Open();
+
+            Query q = em.createNamedQuery("Aluno.findAll");
+
+            return q.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+     
+      public Aluno getByID(String id) {
+        EntityManager em = null;
+        try {
+            em = Open();
+
+            Query q = em.createNamedQuery("Aluno.findByMatricula");
+            q.setParameter("matricula", Integer.parseInt(id));
+
+            return (Aluno) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
     
 }
