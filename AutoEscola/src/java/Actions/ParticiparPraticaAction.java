@@ -6,9 +6,12 @@
 package Actions;
 
 import DAO.AulaPraticaDAO;
+import DAO.PagamentoDAO;
 import Interfaces.ICommander;
 import Models.Aluno;
 import Models.AulaPratica;
+import Models.Pagamento;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,8 +27,14 @@ public class ParticiparPraticaAction implements ICommander{
         Aluno a = (Aluno) request.getSession().getAttribute("user");
         int id = Integer.parseInt(request.getParameter("id"));
         AulaPratica aula = new AulaPraticaDAO().getById(id);
+        List<AulaPratica> aulas = new AulaPraticaDAO().getPorAluno(a);
+        Pagamento p = new PagamentoDAO().getPorAluno(a);
         
-        if(aula.getAlunoMatricula() == null || aula.getAlunoMatricula().getMatricula() == a.getMatricula()){
+        if(aulas.size() == p.getQtdAulaPratica()){
+            request.setAttribute("verifica", true);
+            request.setAttribute("mensagem", "Você já excedeu seu pacote de aulas praticas. Contrate mais aulas para novas marcações.");
+        }        
+        else if(aula.getAlunoMatricula() == null || aula.getAlunoMatricula().getMatricula() == a.getMatricula()){
             aula.setAlunoMatricula(a);
             AulaPraticaDAO aDAO = new AulaPraticaDAO();
             aDAO.edit(aula);

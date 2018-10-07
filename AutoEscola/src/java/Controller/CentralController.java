@@ -15,10 +15,17 @@ import Actions.EditaAlunoAction;
 import Actions.HomeViewAction;
 import Actions.LoginViewAction;
 import Actions.LogoutAction;
+import Actions.MarcaAulaPraticaAlunoViewAction;
+import Actions.MarcaAulaTeoricaAlunoViewAction;
 import Actions.MatriculaAction;
+import Actions.MatriculaPagamentoViewAction;
+import Actions.MinhasAulasTeoricasViewAction;
+import Actions.MinhasAulasViewAction;
 import Actions.ParticiparPraticaAction;
 import Actions.ParticiparTeoricaAction;
 import Actions.SaveAlunoAction;
+import Actions.SavePagamentoAction;
+import Actions.SelecionaAlunoViewAction;
 import Actions.ValidaLoginAction;
 import Actions.ValidaLoginAdminAction;
 import Interfaces.ICommander;
@@ -54,12 +61,19 @@ public class CentralController extends HttpServlet {
         tabela.put("controleAlunos", new ControleAlunosViewAction());
         tabela.put("dadosAluno", new DadosAlunoAction());
         tabela.put("editarUser", new EditaAlunoAction());
+        tabela.put("matriculaPagamento", new MatriculaPagamentoViewAction());
+        tabela.put("savePagamento", new SavePagamentoAction());
+        tabela.put("selecionaAluno", new SelecionaAlunoViewAction());
+        tabela.put("MarcaAlaPraticaAluno", new MarcaAulaPraticaAlunoViewAction());
+        tabela.put("MarcaAlaTeoricaAluno", new MarcaAulaTeoricaAlunoViewAction());
         
         tabela.put("aulaTeorcaAluno", new AulaTeoricaAlunoViewAction());
         tabela.put("participarTeorica", new ParticiparTeoricaAction());
+        tabela.put("minhasAulasTeoricas", new MinhasAulasTeoricasViewAction());
         
         tabela.put("aulaPraticaAluno", new AulaPraticaAlunoViewAction());
-        tabela.put("participarTeorica", new ParticiparPraticaAction());
+        tabela.put("participarPratica", new ParticiparPraticaAction());
+        tabela.put("minhasAulasPraticas", new MinhasAulasViewAction());
 
     }
 

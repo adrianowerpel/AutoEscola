@@ -20,10 +20,8 @@
                 </a>                            
             
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="control?ac=matricula">Teóricas</a>
-                    <a class="dropdown-item" href="control?ac=matricula">Práticas</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="control?ac=login">Todas</a>
+                    <a class="dropdown-item" href="control?ac=aulaTeorcaAluno">Teóricas</a>
+                    <a class="dropdown-item" href="control?ac=aulaPraticaAluno">Práticas</a>
                 </div>                     
             </li>
             
@@ -82,8 +80,6 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="control?ac=matricula">Teóricas</a>
                     <a class="dropdown-item" href="control?ac=matricula">Práticas</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="control?ac=login">Todas</a>
                 </div>                     
             </li>
             
@@ -125,7 +121,7 @@
 </c:if>  
 
 <%-- Menu Atendente Logado --%>
-<c:if test="${sessionScope.user == null && sessionScope.admin == null && sessionScope.atendente != null}">
+<c:if test="${sessionScope.user == null && sessionScope.admin == null && sessionScope.atendente != null || (sessionScope.atendente != null && sessionScope.user != null)}">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -144,10 +140,8 @@
                 </a>                            
             
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="control?ac=matricula">Teóricas</a>
-                    <a class="dropdown-item" href="control?ac=matricula">Práticas</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="control?ac=login">Todas</a>
+                    <a class="dropdown-item" href="control?ac=aulaTeorcaAluno">Teóricas</a>
+                    <a class="dropdown-item" href="control?ac=aulaPraticaAluno">Práticas</a>
                 </div>                     
             </li>
             
@@ -158,9 +152,7 @@
                 </a>                            
             
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="control?ac=matricula">Pré-Matrícula</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="control?ac=login">Login</a>
+                    <a class="dropdown-item" href="control?ac=selecionaAluno">Marcação de Aulas</a>
                 </div>                     
             </li>
             
@@ -207,10 +199,8 @@
                 </a>                            
             
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="control?ac=matricula">Teóricas</a>
-                    <a class="dropdown-item" href="control?ac=matricula">Práticas</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="control?ac=login">Todas</a>
+                    <a class="dropdown-item" href="control?ac=aulaTeorcaAluno">Teóricas</a>
+                    <a class="dropdown-item" href="control?ac=aulaPraticaAluno">Práticas</a>
                 </div>                     
             </li>
             
@@ -221,8 +211,8 @@
                 </a>                            
             
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="control?ac=aulaTeorcaAluno">Aulas Teóricas</a>
-                    <a class="dropdown-item" href="control?ac=aulaPraticaAluno">Aulas Praticas</a>
+                    <a class="dropdown-item" href="control?ac=minhasAulasTeoricas">Minhas Aulas Teóricas</a>
+                    <a class="dropdown-item" href="control?ac=minhasAulasPraticas">Minhas Aulas Praticas</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="control?ac=logout">Logout</a>
                 </div>                     

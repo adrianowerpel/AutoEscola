@@ -6,19 +6,21 @@
 package Models;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,7 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Pagamento.findByAvista", query = "SELECT p FROM Pagamento p WHERE p.avista = :avista")
     , @NamedQuery(name = "Pagamento.findByValor", query = "SELECT p FROM Pagamento p WHERE p.valor = :valor")
     , @NamedQuery(name = "Pagamento.findByNumParcelas", query = "SELECT p FROM Pagamento p WHERE p.numParcelas = :numParcelas")
-    , @NamedQuery(name = "Pagamento.findByValorParcelas", query = "SELECT p FROM Pagamento p WHERE p.valorParcelas = :valorParcelas")})
+    , @NamedQuery(name = "Pagamento.findByValorParcelas", query = "SELECT p FROM Pagamento p WHERE p.valorParcelas = :valorParcelas")
+    , @NamedQuery(name = "Pagamento.findByDataPagamento", query = "SELECT p FROM Pagamento p WHERE p.dataPagamento = :dataPagamento")
+    , @NamedQuery(name = "Pagamento.findByQtdAulaPratica", query = "SELECT p FROM Pagamento p WHERE p.qtdAulaPratica = :qtdAulaPratica")
+    , @NamedQuery(name = "Pagamento.findByQtdAulaTeorica", query = "SELECT p FROM Pagamento p WHERE p.qtdAulaTeorica = :qtdAulaTeorica")})
 public class Pagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,16 +53,27 @@ public class Pagamento implements Serializable {
     private String situacao;
     @Basic(optional = false)
     @Column(nullable = false)
-    private short avista;
+    private boolean avista;
     @Basic(optional = false)
     @Column(nullable = false)
-    private long valor;
+    private Double valor;
     @Column(name = "num_parcelas")
     private Integer numParcelas;
     @Column(name = "valor_parcelas")
-    private Long valorParcelas;
-    @OneToMany(mappedBy = "pagamentoId")
-    private List<Aluno> alunoList;
+    private Double valorParcelas;
+    @Basic(optional = false)
+    @Column(name = "data_pagamento", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date dataPagamento;
+    @Basic(optional = false)
+    @Column(name = "qtd_aula_pratica", nullable = false)
+    private int qtdAulaPratica;
+    @Basic(optional = false)
+    @Column(name = "qtd_aula_teorica", nullable = false)
+    private int qtdAulaTeorica;
+    @JoinColumn(name = "aluno_matricula", referencedColumnName = "matricula", nullable = false)
+    @ManyToOne(optional = false)
+    private Aluno alunoMatricula;
 
     public Pagamento() {
     }
@@ -66,11 +82,14 @@ public class Pagamento implements Serializable {
         this.id = id;
     }
 
-    public Pagamento(Integer id, String situacao, short avista, long valor) {
+    public Pagamento(Integer id, String situacao, boolean avista, Double valor, Date dataPagamento, int qtdAulaPratica, int qtdAulaTeorica) {
         this.id = id;
         this.situacao = situacao;
         this.avista = avista;
         this.valor = valor;
+        this.dataPagamento = dataPagamento;
+        this.qtdAulaPratica = qtdAulaPratica;
+        this.qtdAulaTeorica = qtdAulaTeorica;
     }
 
     public Integer getId() {
@@ -89,19 +108,19 @@ public class Pagamento implements Serializable {
         this.situacao = situacao;
     }
 
-    public short getAvista() {
+    public boolean getAvista() {
         return avista;
     }
 
-    public void setAvista(short avista) {
+    public void setAvista(boolean avista) {
         this.avista = avista;
     }
 
-    public long getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(long valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
@@ -113,21 +132,44 @@ public class Pagamento implements Serializable {
         this.numParcelas = numParcelas;
     }
 
-    public Long getValorParcelas() {
+    public Double getValorParcelas() {
         return valorParcelas;
     }
 
-    public void setValorParcelas(Long valorParcelas) {
+    public void setValorParcelas(Double valorParcelas) {
         this.valorParcelas = valorParcelas;
     }
 
-    @XmlTransient
-    public List<Aluno> getAlunoList() {
-        return alunoList;
+    public Date getDataPagamento() {
+        return dataPagamento;
     }
 
-    public void setAlunoList(List<Aluno> alunoList) {
-        this.alunoList = alunoList;
+    public void setDataPagamento(Date dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
+    public int getQtdAulaPratica() {
+        return qtdAulaPratica;
+    }
+
+    public void setQtdAulaPratica(int qtdAulaPratica) {
+        this.qtdAulaPratica = qtdAulaPratica;
+    }
+
+    public int getQtdAulaTeorica() {
+        return qtdAulaTeorica;
+    }
+
+    public void setQtdAulaTeorica(int qtdAulaTeorica) {
+        this.qtdAulaTeorica = qtdAulaTeorica;
+    }
+
+    public Aluno getAlunoMatricula() {
+        return alunoMatricula;
+    }
+
+    public void setAlunoMatricula(Aluno alunoMatricula) {
+        this.alunoMatricula = alunoMatricula;
     }
 
     @Override

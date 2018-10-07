@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Models.Aluno;
 import Models.AulaPratica;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +87,41 @@ public class AulaPraticaDAO extends GenericDAO{
                 em.close();
             }
         }    
+    }
+     
+     public List<AulaPratica> getPorAluno(Aluno aluno) {
+        EntityManager em = null;
+        try {
+            em = Open();
+
+            Query q = em.createQuery("SELECT a FROM AulaPratica a WHERE a.alunoMatricula = :aluno");
+            q.setParameter("aluno", aluno);
+
+            return (List<AulaPratica>) q.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+     
+      public List<AulaPratica> getSemAluno() {
+        EntityManager em = null;
+        try {
+            em = Open();
+
+            Query q = em.createQuery("SELECT a FROM AulaPratica a WHERE a.alunoMatricula IS NULL");
+
+            return (List<AulaPratica>) q.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
     
 }

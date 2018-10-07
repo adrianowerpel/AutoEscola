@@ -6,6 +6,7 @@
 package Models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -98,11 +99,10 @@ public class Aluno implements Serializable {
     @JoinColumn(name = "login_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Login loginId;
-    @JoinColumn(name = "pagamento_id", referencedColumnName = "id")
-    @ManyToOne
-    private Pagamento pagamentoId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunoMatricula")
     private List<AulaPratica> aulaPraticaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunoMatricula")
+    private List<Pagamento> pagamentoList;
 
     public Aluno() {
     }
@@ -123,6 +123,10 @@ public class Aluno implements Serializable {
         this.matriculado = matriculado;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
+    }
+    
+    public String dataNascimentoToString(){
+        return new SimpleDateFormat("dd/MM/yyyy").format(dataNascimento);
     }
 
     public Integer getMatricula() {
@@ -238,14 +242,6 @@ public class Aluno implements Serializable {
         this.loginId = loginId;
     }
 
-    public Pagamento getPagamentoId() {
-        return pagamentoId;
-    }
-
-    public void setPagamentoId(Pagamento pagamentoId) {
-        this.pagamentoId = pagamentoId;
-    }
-
     @XmlTransient
     public List<AulaPratica> getAulaPraticaList() {
         return aulaPraticaList;
@@ -253,6 +249,15 @@ public class Aluno implements Serializable {
 
     public void setAulaPraticaList(List<AulaPratica> aulaPraticaList) {
         this.aulaPraticaList = aulaPraticaList;
+    }
+
+    @XmlTransient
+    public List<Pagamento> getPagamentoList() {
+        return pagamentoList;
+    }
+
+    public void setPagamentoList(List<Pagamento> pagamentoList) {
+        this.pagamentoList = pagamentoList;
     }
 
     @Override

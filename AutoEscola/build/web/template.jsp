@@ -39,19 +39,19 @@
 
             <jsp:include page="pages/menu.jsp"/>
             
-            <c:if test="${sessionScope.user != null}">
+            <c:if test="${sessionScope.admin != null}">
                 <div style="margin-top: 2%">
-                    <h4>Bem Vindo ${sessionScope.user.nome}</h4>                 
+                    <h4>Administrador: ${sessionScope.admin.nome}</h4>                 
                 </div>
             </c:if>
             <c:if test="${sessionScope.atendente != null}">
                 <div style="margin-top: 2%">
-                    <h4>Bem Vindo ${sessionScope.atendente.nome}</h4>                 
+                    <h4>Atendente: ${sessionScope.atendente.nome}</h4>                 
                 </div>
             </c:if>
-            <c:if test="${sessionScope.admin != null}">
+            <c:if test="${sessionScope.user != null}">
                 <div style="margin-top: 2%">
-                    <h4>Bem Vindo ${sessionScope.admin.nome}</h4>                 
+                    <h4>Aluno: ${sessionScope.user.nome}</h4>                 
                 </div>
             </c:if>
 
@@ -85,3 +85,13 @@
 
     </body>
 </html>
+
+<script>
+    <%
+        if (request.getAttribute("verifica") != null && ((boolean) request.getAttribute("verifica"))) {
+    %>
+            alert("<%= request.getAttribute("mensagem")%>");
+    <%
+        }
+    %>
+</script>

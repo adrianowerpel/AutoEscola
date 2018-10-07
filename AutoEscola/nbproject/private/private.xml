@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/DAO/AlunoDAO.java</file>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Controller/CentralController.java</file>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Actions/SaveAlunoAction.java</file>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Actions/EditaAlunoAction.java</file>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/web/pages/admin/dadosAluno.jsp</file>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Actions/DadosAlunoAction.java</file>
-            <file>file:/G:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/web/pages/admin/controleAlunos.jsp</file>
+            <file>file:/E:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/web/pages/menu.jsp</file>
+            <file>file:/E:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Actions/AulaPraticaAlunoViewAction.java</file>
+            <file>file:/E:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/DAO/AulaPraticaDAO.java</file>
+            <file>file:/E:/Pendrive/Vianna/4-Periodo/POOA/Trabalho-1/AutoEscola/AutoEscola/src/java/Controller/CentralController.java</file>
         </group>
     </open-files>
 </project-private>

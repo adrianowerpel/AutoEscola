@@ -4,6 +4,10 @@ MAIN CONTENT
 
 <div class="container" style="margin-top: 100px; margin-bottom: 50px; width: 500px; height: 400px">
     <div class="container">
+        
+        <div class="alert alert-danger" id="alerta">
+            <strong>Atenção!</strong> Somente conseguirão logar os alunos devidamente matrículados.
+        </div>
 
         <form class="form-control" action="control" method="POST">
             <input type="hidden" name="ac" id="tipoPessoa"/>
@@ -56,6 +60,7 @@ MAIN CONTENT
     else{
         %>
             document.getElementById("tipoPessoa").value = 'validaLoginAdmin';
+            document.getElementById("alerta").hidden = true
         <%
     }
     %>

@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Models.Aluno;
 import Models.AulaTeorica;
 import java.util.ArrayList;
 import java.util.List;

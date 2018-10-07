@@ -10,11 +10,10 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-01T15:39:53")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-06T21:39:48")
 @StaticMetamodel(Aluno.class)
 public class Aluno_ { 
 
-    public static volatile SingularAttribute<Aluno, Pagamento> pagamentoId;
     public static volatile SingularAttribute<Aluno, String> cidade;
     public static volatile SingularAttribute<Aluno, String> estado;
     public static volatile SingularAttribute<Aluno, Login> loginId;
@@ -22,8 +21,9 @@ public class Aluno_ {
     public static volatile SingularAttribute<Aluno, String> bairro;
     public static volatile SingularAttribute<Aluno, String> nome;
     public static volatile ListAttribute<Aluno, AulaTeorica> aulaTeoricaList;
+    public static volatile ListAttribute<Aluno, Pagamento> pagamentoList;
     public static volatile SingularAttribute<Aluno, String> complemento;
-    public static volatile SingularAttribute<Aluno, Short> matriculado;
+    public static volatile SingularAttribute<Aluno, Boolean> matriculado;
     public static volatile ListAttribute<Aluno, AulaPratica> aulaPraticaList;
     public static volatile SingularAttribute<Aluno, String> logradouro;
     public static volatile SingularAttribute<Aluno, Integer> matricula;

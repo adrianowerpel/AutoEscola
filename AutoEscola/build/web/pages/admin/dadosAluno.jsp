@@ -88,19 +88,7 @@
                     <option value="TO"> TO </option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="nome">Matriculado</label>
-                <select class="form-control" name="matriculado" id="matriculado">   
-                    <c:if test="${a.matriculado}">
-                        <option value="${a.matriculado}">SIM</option>
-                    </c:if>
-                    <c:if test="${!a.matriculado}">
-                        <option value="${!a.matriculado}"> NÃO </option>
-                    </c:if>    
-                        <option value="true"> SIM </option>
-                        <option value="false"> NÃO </option>
-                </select>
-            </div>
+           
             <div>
                 <button class="btn btn-primary" type="submit"> Salvar</button>
             </div>

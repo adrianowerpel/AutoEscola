@@ -6,6 +6,7 @@
 package Models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -53,12 +54,12 @@ public class AulaPratica implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 12)
     private String veiculo;
-    @JoinColumn(name = "professor_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private Professor professorId;
     @JoinColumn(name = "aluno_matricula", referencedColumnName = "matricula", nullable = false)
     @ManyToOne(optional = false)
     private Aluno alunoMatricula;
+    @JoinColumn(name = "professor_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private Professor professorId;
 
     public AulaPratica() {
     }
@@ -74,6 +75,10 @@ public class AulaPratica implements Serializable {
         this.veiculo = veiculo;
     }
 
+    public String dataAulaToString(){
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm").format(dataAula);
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -106,20 +111,20 @@ public class AulaPratica implements Serializable {
         this.veiculo = veiculo;
     }
 
-    public Professor getProfessorId() {
-        return professorId;
-    }
-
-    public void setProfessorId(Professor professorId) {
-        this.professorId = professorId;
-    }
-
     public Aluno getAlunoMatricula() {
         return alunoMatricula;
     }
 
     public void setAlunoMatricula(Aluno alunoMatricula) {
         this.alunoMatricula = alunoMatricula;
+    }
+
+    public Professor getProfessorId() {
+        return professorId;
+    }
+
+    public void setProfessorId(Professor professorId) {
+        this.professorId = professorId;
     }
 
     @Override
