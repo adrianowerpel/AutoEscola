@@ -111,5 +111,23 @@ public class AlunoDAO extends GenericDAO{
             }
         }
     }
+      
+       public List<Aluno> getAllMatriculados() {
+        EntityManager em = null;
+        try {
+            em = Open();
+            String jpql = "SELECT a FROM Aluno a WHERE a.matriculado != false";
+
+            Query q = em.createQuery(jpql);
+
+            return q.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
     
 }

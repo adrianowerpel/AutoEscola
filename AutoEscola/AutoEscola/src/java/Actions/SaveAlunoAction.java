@@ -46,10 +46,10 @@ public class SaveAlunoAction implements ICommander{
         aluno.setLoginId(login);
         
         new AlunoDAO().save(aluno);            
-//        request.setAttribute("info", "Salvo com Sucesso!");
-//        request.setAttribute("jsAtivo", true);
-            
-        new LoginViewAction().executar(request, response);
+
+        request.setAttribute("verifica", true);
+        request.setAttribute("mensagem", "Sua pré matrícula foi realizada, realize o pagamento para efetiva-la.");    
+        new HomeViewAction().executar(request, response);
         
     }
     

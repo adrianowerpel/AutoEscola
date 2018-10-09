@@ -10,7 +10,9 @@
                     <th>Veiculo</th>
                     <th>Professor</th>
                     <th>Aluno</th>
-                    <th td colspan="4">Ações</th>
+                    <c:if test="${sessionScope.user != null}">
+                        <th td colspan="4">Ações</th>
+                    </c:if>
                 </tr>
             </thead>
 
@@ -22,7 +24,7 @@
                 </c:if>
                 <c:forEach items="${requestScope.praticas}" var="p">
                     <tr>
-                        <td>${p.dataAula}</td>
+                        <td>${p.dataAulaToString()}</td>
                         <td>${p.tema}</td>
                         <td>${p.veiculo}</td>
                         <td>${p.professorId.nome}</td>
@@ -33,8 +35,10 @@
                             <c:if test="${p.alunoMatricula.nome == null}">
                             <td>Disponível</td>
                         </c:if>
-                            
-                        <td><a href="control?ac=participarTeorica&id=${p.id}"> <button type="button" class="btn btn-warning">Participar</button> </a></td>
+                          
+                        <c:if test="${sessionScope.user != null}">
+                            <td><a href="control?ac=participarPratica&id=${p.id}"> <button type="button" class="btn btn-warning">Participar</button> </a></td>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -43,12 +47,4 @@
     </div>
 </div>
 
-<script>
-    <%
-        if (((boolean) request.getAttribute("verifica"))) {
-    %>
-    alert("<%= request.getAttribute("mensagem")%>");
-    <%
-        }
-    %>
-</script>
+

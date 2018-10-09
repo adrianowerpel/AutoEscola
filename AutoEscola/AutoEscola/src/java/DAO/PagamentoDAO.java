@@ -87,10 +87,10 @@ public class PagamentoDAO extends GenericDAO {
         try {
             em = Open();
 
-            Query q = em.createQuery("Select p FROM Pagamento p WHERE p.alunoMatricula = :aluno");
+            Query q = em.createQuery("Select p FROM Pagamento p WHERE p.alunoMatricula = :aluno ORDER BY p.dataPagamento DESC");
             q.setParameter("aluno", aluno);
 
-            return (Pagamento) q.getSingleResult();
+            return (Pagamento) q.setMaxResults(1).getSingleResult();
         } catch (Exception e) {
             return null;
         } finally {

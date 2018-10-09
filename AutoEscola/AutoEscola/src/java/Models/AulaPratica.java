@@ -6,6 +6,7 @@
 package Models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -74,6 +75,10 @@ public class AulaPratica implements Serializable {
         this.veiculo = veiculo;
     }
 
+    public String dataAulaToString(){
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm").format(dataAula);
+    }
+    
     public Integer getId() {
         return id;
     }

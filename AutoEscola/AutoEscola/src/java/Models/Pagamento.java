@@ -37,7 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Pagamento.findByValor", query = "SELECT p FROM Pagamento p WHERE p.valor = :valor")
     , @NamedQuery(name = "Pagamento.findByNumParcelas", query = "SELECT p FROM Pagamento p WHERE p.numParcelas = :numParcelas")
     , @NamedQuery(name = "Pagamento.findByValorParcelas", query = "SELECT p FROM Pagamento p WHERE p.valorParcelas = :valorParcelas")
-    , @NamedQuery(name = "Pagamento.findByDataPagamento", query = "SELECT p FROM Pagamento p WHERE p.dataPagamento = :dataPagamento")})
+    , @NamedQuery(name = "Pagamento.findByDataPagamento", query = "SELECT p FROM Pagamento p WHERE p.dataPagamento = :dataPagamento")
+    , @NamedQuery(name = "Pagamento.findByQtdAulaPratica", query = "SELECT p FROM Pagamento p WHERE p.qtdAulaPratica = :qtdAulaPratica")
+    , @NamedQuery(name = "Pagamento.findByQtdAulaTeorica", query = "SELECT p FROM Pagamento p WHERE p.qtdAulaTeorica = :qtdAulaTeorica")})
 public class Pagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -63,6 +65,12 @@ public class Pagamento implements Serializable {
     @Column(name = "data_pagamento", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dataPagamento;
+    @Basic(optional = false)
+    @Column(name = "qtd_aula_pratica", nullable = false)
+    private int qtdAulaPratica;
+    @Basic(optional = false)
+    @Column(name = "qtd_aula_teorica", nullable = false)
+    private int qtdAulaTeorica;
     @JoinColumn(name = "aluno_matricula", referencedColumnName = "matricula", nullable = false)
     @ManyToOne(optional = false)
     private Aluno alunoMatricula;
@@ -74,13 +82,14 @@ public class Pagamento implements Serializable {
         this.id = id;
     }
 
-    public Pagamento(Integer id, String situacao, boolean avista, Double valor, Double valorParcelas, Date dataPagamento) {
+    public Pagamento(Integer id, String situacao, boolean avista, Double valor, Date dataPagamento, int qtdAulaPratica, int qtdAulaTeorica) {
         this.id = id;
         this.situacao = situacao;
         this.avista = avista;
         this.valor = valor;
-        this.valorParcelas = valorParcelas;
         this.dataPagamento = dataPagamento;
+        this.qtdAulaPratica = qtdAulaPratica;
+        this.qtdAulaTeorica = qtdAulaTeorica;
     }
 
     public Integer getId() {
@@ -137,6 +146,22 @@ public class Pagamento implements Serializable {
 
     public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
+    }
+
+    public int getQtdAulaPratica() {
+        return qtdAulaPratica;
+    }
+
+    public void setQtdAulaPratica(int qtdAulaPratica) {
+        this.qtdAulaPratica = qtdAulaPratica;
+    }
+
+    public int getQtdAulaTeorica() {
+        return qtdAulaTeorica;
+    }
+
+    public void setQtdAulaTeorica(int qtdAulaTeorica) {
+        this.qtdAulaTeorica = qtdAulaTeorica;
     }
 
     public Aluno getAlunoMatricula() {

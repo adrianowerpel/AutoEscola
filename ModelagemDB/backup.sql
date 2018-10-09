@@ -138,7 +138,7 @@ CREATE TABLE `aula_teorica_has_aluno` (
 
 LOCK TABLES `aula_teorica_has_aluno` WRITE;
 /*!40000 ALTER TABLE `aula_teorica_has_aluno` DISABLE KEYS */;
-INSERT INTO `aula_teorica_has_aluno` VALUES (1,6),(2,6),(3,6),(4,6),(18,6),(18,7);
+INSERT INTO `aula_teorica_has_aluno` VALUES (1,6),(2,6),(3,6),(4,6),(17,6),(18,7);
 /*!40000 ALTER TABLE `aula_teorica_has_aluno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +189,7 @@ CREATE TABLE `pagamento` (
   PRIMARY KEY (`id`),
   KEY `fk_pagamento_aluno1_idx` (`aluno_matricula`),
   CONSTRAINT `fk_pagamento_aluno1` FOREIGN KEY (`aluno_matricula`) REFERENCES `aluno` (`matricula`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,4 +273,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-06 22:40:11
+-- Dump completed on 2018-10-09 17:24:06

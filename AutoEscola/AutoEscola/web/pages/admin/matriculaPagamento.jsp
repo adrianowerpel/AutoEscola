@@ -39,6 +39,25 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="qtdTeoricas">Pacote Aulas Teóricas</label>
+                <select class="form-control" name="qtdTeoricas" id="qtdTeoricas">
+                    <option value="15"> 15 Aulas </option>
+                    <option value="20"> 20 Aulas </option>
+                    <option value="25"> 25 Aulas </option>
+                    <option value="30"> 30 Aulas </option>
+                    <option value="35"> 35 Aulas </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="qtdPraticas">Pacote Aulas Práticas</label>
+                <select class="form-control" name="qtdPraticas" id="qtdPraticas"> 
+                    <option value="10"> 10 Aulas </option>
+                    <option value="15"> 15 Aulas </option>
+                    <option value="20"> 20 Aulas </option>
+                    <option value="25"> 25 Aulas </option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="nome">Valot Total a Pagar</label>
                 <input id="valTotal" name="valTotal" class="form-control" type="number">
             </div>

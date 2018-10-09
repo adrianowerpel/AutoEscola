@@ -41,7 +41,7 @@ public class ProfessorDAO extends GenericDAO{
         EntityManager em = null;
         try{            
             em = Open();
-            String jpql = "select p from Professor p where p.login_id = :idLogin";
+            String jpql = "select p from Professor p where p.loginId = :idLogin";
             
             Query q = em.createQuery(jpql);
             q.setParameter("idLogin", idLogin);

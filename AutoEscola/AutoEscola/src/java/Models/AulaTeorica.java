@@ -6,6 +6,7 @@
 package Models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -69,6 +70,10 @@ public class AulaTeorica implements Serializable {
         this.id = id;
         this.dataAula = dataAula;
         this.tema = tema;
+    }
+    
+    public String dataAulaToString(){
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm").format(dataAula);
     }
 
     public Integer getId() {

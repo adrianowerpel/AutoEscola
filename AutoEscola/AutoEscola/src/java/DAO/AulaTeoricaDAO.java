@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import Models.Aluno;
 import Models.AulaTeorica;
+import Models.Professor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -86,5 +88,23 @@ public class AulaTeoricaDAO extends GenericDAO{
                 em.close();
             }
         }    
+    }
+    
+    public List<AulaTeorica> getPorProfessor(Professor professor) {
+        EntityManager em = null;
+        try {
+            em = Open();
+
+            Query q = em.createQuery("SELECT a FROM AulaTeorica a WHERE a.professorId = :professor");
+            q.setParameter("professor", professor);
+
+            return (List<AulaTeorica>) q.getResultList();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 }

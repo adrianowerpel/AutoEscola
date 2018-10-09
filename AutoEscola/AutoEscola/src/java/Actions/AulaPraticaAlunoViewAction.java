@@ -7,6 +7,7 @@ package Actions;
 
 import DAO.AulaPraticaDAO;
 import Interfaces.ICommander;
+import Models.Aluno;
 import Models.AulaPratica;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,9 @@ public class AulaPraticaAlunoViewAction implements ICommander{
     @Override
     public void executar(HttpServletRequest request, HttpServletResponse response) throws Exception {
         
-        List<AulaPratica> praticas = new AulaPraticaDAO().getAll();
+        Aluno a = (Aluno) request.getSession().getAttribute("user");
+        
+        List<AulaPratica> praticas = new AulaPraticaDAO().getSemAluno();
                
         RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=aluno/aulaPratica");
         request.setAttribute("praticas", praticas);

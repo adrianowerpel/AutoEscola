@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import Models.Aluno;
 import Models.AulaPratica;
+import Models.Professor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -86,6 +88,59 @@ public class AulaPraticaDAO extends GenericDAO{
                 em.close();
             }
         }    
+    }
+     
+     public List<AulaPratica> getPorAluno(Aluno aluno) {
+        EntityManager em = null;
+        try {
+            em = Open();
+
+            Query q = em.createQuery("SELECT a FROM AulaPratica a WHERE a.alunoMatricula = :aluno");
+            q.setParameter("aluno", aluno);
+
+            return (List<AulaPratica>) q.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+     
+      public List<AulaPratica> getSemAluno() {
+        EntityManager em = null;
+        try {
+            em = Open();
+
+            Query q = em.createQuery("SELECT a FROM AulaPratica a WHERE a.alunoMatricula IS NULL");
+
+            return (List<AulaPratica>) q.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+      
+      public List<AulaPratica> getPorProfessor(Professor professor) {
+        EntityManager em = null;
+        try {
+            em = Open();
+
+            Query q = em.createQuery("SELECT a FROM AulaPratica a WHERE a.professorId = :professor");
+            q.setParameter("professor", professor);
+
+            return (List<AulaPratica>) q.getResultList();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
     
 }

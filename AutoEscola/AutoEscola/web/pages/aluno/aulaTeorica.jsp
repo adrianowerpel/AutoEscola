@@ -4,16 +4,18 @@
 
         <table class="table table-striped bg-light">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>Data</th>
                     <th>Tema</th>
                     <th>Professor</th>
                     <th>Quantidade Alunos</th>
-                    <th td colspan="4">Ações</th>
+                    <c:if test="${sessionScope.user != null}">
+                        <th td colspan="4">Ações</th>
+                    </c:if>
                 </tr>
             </thead>
 
-            <tbody  id="tabela">
+            <tbody  id="tabela" class="text-center">
             <c:if test="${requestScope.teoricas.size() == 0}">
                     <tr>
                         <td colspan="4">  Não há Aulas Teóricas Cadastrados </td>
@@ -21,11 +23,14 @@
                 </c:if>
                 <c:forEach items="${requestScope.teoricas}" var="m">
                     <tr>
-                        <td>${m.dataAula}</td>
+                        <td>${m.dataAulaToString()}</td>
                         <td>${m.tema}</td>
                         <td>${m.professorId.nome}</td>
                         <td>${m.alunoList.size()}</td>
-                        <td><a href="control?ac=participarTeorica&id=${m.id}"> <button type="button" class="btn btn-warning">Participar</button> </a></td>
+                        
+                        <c:if test="${sessionScope.user != null}">
+                            <td><a href="control?ac=participarTeorica&id=${m.id}"> <button type="button" class="btn btn-warning">Participar</button> </a></td>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </tbody>

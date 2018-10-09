@@ -28,14 +28,32 @@ public class AulaTeoricaAlunoViewAction implements ICommander{
 
     @Override
     public void executar(HttpServletRequest request, HttpServletResponse response) throws Exception {
-                
+           
+        Aluno aluno = (Aluno) request.getSession().getAttribute("user");
+        
         List<AulaTeorica> aulas = new AulaTeoricaDAO().getAll();
         List<AulaTeorica> teoricas = new ArrayList<AulaTeorica>();
         
-        for(AulaTeorica a: aulas)
-        {
-            if(a.getAlunoList().size() < 20){
-                teoricas.add(a);
+        if(aluno != null){
+            for(AulaTeorica at: aulas){
+                
+                if(at.getAlunoList().size() < 20){
+                    teoricas.add(at);
+                }
+                
+                for(Aluno al: at.getAlunoList()){
+                    if(al.getMatricula() == aluno.getMatricula()){
+                        teoricas.remove(at);
+                    }
+                }
+            }
+        }
+        else{        
+            for(AulaTeorica a: aulas)
+            {
+                if(a.getAlunoList().size() < 20){
+                    teoricas.add(a);
+                }
             }
         }
                

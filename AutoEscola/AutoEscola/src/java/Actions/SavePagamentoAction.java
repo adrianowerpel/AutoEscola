@@ -34,6 +34,8 @@ public class SavePagamentoAction implements ICommander{
         p.setValor(Double.parseDouble(request.getParameter("valTotal")));
         p.setAvista(Boolean.parseBoolean(request.getParameter("tipo")));
         p.setDataPagamento(sdf.parse(request.getParameter("dt_pag")));
+        p.setQtdAulaTeorica(Integer.parseInt(request.getParameter("qtdTeoricas")));
+        p.setQtdAulaPratica(Integer.parseInt(request.getParameter("qtdPraticas")));
         
         if(!p.getAvista()){
             p.setNumParcelas(Integer.parseInt(request.getParameter("numParcelas")));
@@ -43,6 +45,8 @@ public class SavePagamentoAction implements ICommander{
         new AlunoDAO().edit(a);
         new PagamentoDAO().save(p);
         
+        request.setAttribute("verifica", true);
+        request.setAttribute("mensagem", "Alterações efetuadas com sucesso!"); 
         new ControleAlunosViewAction().executar(request, response);
     }    
 }

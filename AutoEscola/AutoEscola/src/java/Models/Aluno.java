@@ -6,6 +6,7 @@
 package Models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -122,6 +123,10 @@ public class Aluno implements Serializable {
         this.matriculado = matriculado;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
+    }
+    
+    public String dataNascimentoToString(){
+        return new SimpleDateFormat("dd/MM/yyyy").format(dataNascimento);
     }
 
     public Integer getMatricula() {

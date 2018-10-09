@@ -26,7 +26,7 @@
                         <td>${a.matricula}</td>
                         <td>${a.nome}</td>
                         <td>${a.cpf}</td>
-                        <td>${a.dataNascimento}</td>
+                        <td>${a.dataNascimentoToString()}</td>
                         <td>${a.email}</td>
                         
                         <c:if test="${a.matriculado}">
@@ -45,3 +45,13 @@
 
     </div>
 </div>
+
+<script>
+    <%
+        if (request.getAttribute("verifica") != null && ((boolean) request.getAttribute("verifica"))) {
+    %>
+            alert("<%= request.getAttribute("mensagem")%>");
+    <%
+        }
+    %>
+</script>
